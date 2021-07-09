@@ -13,11 +13,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class AppointmentController extends AbstractController
 {
     #[Route('/', name: 'app_calendar', methods: ['GET'])]
-    public function calendar(): Response
+    public function calendar(AppointmentRepository $appointmentRepository): Response
     {
         $time = new \DateTime();
         return $this->render('calendar/calendar.html.twig', [
             'time' => $time,
+            'appointments' => $appointmentRepository->findAll(),
         ]);
     }
 
