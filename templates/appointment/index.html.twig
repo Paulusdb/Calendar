@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Appointment index{% endblock %}
+
+{% block page_subtitle %}Appointment list{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Begin</th>
+                <th>End</th>
+                <th>Notification</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment.id }}</td>
+                <td>{{ appointment.title }}</td>
+                <td>{{ appointment.begin ? appointment.begin|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ appointment.end ? appointment.end|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ appointment.notification ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('appointment_show', {'id': appointment.id}) }}">show</a>
+                    <a href="{{ path('appointment_edit', {'id': appointment.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

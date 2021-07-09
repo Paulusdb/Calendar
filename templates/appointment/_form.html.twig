@@ -1,0 +1,17 @@
+{{ form_start(form, {'attr': {'class': 'col-4 row g-3'}}) }}
+    <div>
+        {{ form_label(form.title, null, {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div>
+        {{ form_label(form.begin, null, {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.begin) }}
+    </div>
+    <div>
+        {{ form_label(form.end, null, {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.end) }}
+    </div>
+    <div>
+        {{ form_widget(form.notification, {'attr': {'class': 'form-check-input'}}) }}
+        {{ form_label(form.notification, null, {'label_attr': {'class': 'form-check-label'}}) }}
+    </div>

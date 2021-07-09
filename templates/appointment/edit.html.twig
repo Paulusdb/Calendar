@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Appointment{% endblock %}
+
+{% block page_subtitle %}Edit Appointment{% endblock %}
+
+{% block body %}
+    {{ include('appointment/_form.html.twig') }}
+
+    <div>
+        {{ form_widget(form.submit, {'label': 'Update Appointment', 'attr': {'class': 'btn btn-primary'}}) }}
+    </div>
+
+    {{ form_end(form) }}
+
+    {{ include('appointment/_delete_form.html.twig') }}
+{% endblock %}

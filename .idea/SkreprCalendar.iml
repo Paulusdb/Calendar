@@ -62,7 +62,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/doctrine-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/sql-formatter" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/deprecations" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/twbs/bootstrap" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/twig/twig" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/twig/extra-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/translation-contracts" />
@@ -80,6 +79,11 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-intl-icu" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/validator" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/property-access" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/web-profiler-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/monolog-bridge" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/monolog/monolog" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/monolog-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/debug-bundle" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

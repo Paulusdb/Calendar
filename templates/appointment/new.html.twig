@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Appointment{% endblock %}
+
+{% block page_subtitle %}Create new Appointment{% endblock %}
+
+{% block body %}
+    {{ include('appointment/_form.html.twig') }}
+
+    <div>
+        {{ form_widget(form.submit, {'label': 'Make Appointment', 'attr': {'class': 'btn btn-primary'}}) }}
+    </div>
+
+    {{ form_end(form) }}
+{% endblock %}
