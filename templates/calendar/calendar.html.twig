@@ -2,12 +2,29 @@
 
 {% block body %}
 
-    {% set time = time|date_modify('+1 month') %}
     <table class="table table-bordered">
         <thead>
             <tr>
                 <th colspan="7" class="text-center">
-                    {{ time|date('F Y') }}
+                    <div class="row">
+                        <div class="col">
+                            {{ form_start(month_back_form) }}
+                                {{ form_widget(month_back_form.submit, {'label': 'Month Back', 'attr': {'class': 'btn btn-outline-primary btn-sm'}}) }}
+                                {{ form_row(month_back_form.changeMonth, {'value': 'back'}) }}
+                                {{ form_row(month_back_form.currentDateTime, {'value': time|date() }) }}
+                            {{ form_end(month_back_form) }}
+                        </div>
+                        <div class="col">
+                            {{ time|date('F Y') }}
+                        </div>
+                        <div class="col">
+                            {{ form_start(month_forward_form) }}
+                                {{ form_widget(month_forward_form.submit, {'label': 'Month Forward', 'attr': {'class': 'btn btn-outline-primary btn-sm'}}) }}
+                                {{ form_row(month_forward_form.changeMonth, {'value': 'forward'}) }}
+                                {{ form_row(month_forward_form.currentDateTime, {'value': time|date() }) }}
+                            {{ form_end(month_forward_form) }}
+                        </div>
+                    </div>
                 </th>
             </tr>
             <tr>

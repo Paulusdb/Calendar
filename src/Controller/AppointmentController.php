@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Appointment;
 use App\Form\AppointmentType;
+use App\Form\ChangeMonthType;
 use App\Repository\AppointmentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,13 +13,33 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AppointmentController extends AbstractController
 {
-    #[Route('/', name: 'app_calendar', methods: ['GET'])]
-    public function calendar(AppointmentRepository $appointmentRepository): Response
+    #[Route('/', name: 'app_calendar', methods: ['GET', 'POST'])]
+    public function calendar(AppointmentRepository $appointmentRepository, Request $request): Response
     {
+        $form = $this->createForm(ChangeMonthType::class);
+        $form->handleRequest($request);
+
         $time = new \DateTime();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $time = $form->get('currentDateTime')->getData();
+            $time = new \DateTime($time);
+            
+            $changeMonth = $form->get('changeMonth')->getData();
+
+            if ($changeMonth == 'back') {
+                $time = date_modify($time, '-1 month');
+            }
+            elseif ($changeMonth == 'forward') {
+                $time = date_modify($time, '+1 month');
+            }
+        }
+
         return $this->render('calendar/calendar.html.twig', [
             'time' => $time,
             'appointments' => $appointmentRepository->findAll(),
+            'month_back_form' => $form->createView(),
+            'month_forward_form' => $form->createView(),
         ]);
     }
 
