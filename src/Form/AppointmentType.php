@@ -18,7 +18,9 @@ class AppointmentType extends AbstractType
             ->add('title', TextType::class)
             ->add('begin')
             ->add('end')
-            ->add('notification', CheckboxType::class)
+            ->add('notification', CheckboxType::class, [
+                'required' => false,
+            ])
             ->add('submit', SubmitType::class)
         ;
     }

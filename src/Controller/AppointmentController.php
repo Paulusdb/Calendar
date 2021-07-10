@@ -22,9 +22,9 @@ class AppointmentController extends AbstractController
         $time = new \DateTime();
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $time = $form->get('currentDateTime')->getData();
-            $time = new \DateTime($time);
-            
+            $currentTime = $form->get('currentDateTime')->getData();
+            $time = new \DateTime($currentTime);
+
             $changeMonth = $form->get('changeMonth')->getData();
 
             if ($changeMonth == 'back') {

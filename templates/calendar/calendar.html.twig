@@ -47,16 +47,21 @@
                     {% if loop.first and startDow != 0 %}
                         <td colspan="{{ startDow }}"></td>
                     {% endif %}
-                    <td>
+                    <td
+                    {% if day == time|date('j') and 'now'|date('F Y') == time|date('F Y') %}
+                        class="table-success"
+                    {% endif %}
+                    >
                         <div>
                             <div>{{ day }}</div>
                             <div>
                                 {% for appointment in appointments %}
-                                    {% if appointment.begin|date('j') == day and appointment.begin|date('F Y') == time|date('F Y') %}
+                                    {% if (appointment.begin|date('j') == day or
+                                        (appointment.begin|date('j') < day and appointment.end|date('j') >= day)) and
+                                        appointment.begin|date('F Y') == time|date('F Y') %}
                                         <a class="btn btn-outline-primary btn-sm"
                                            href="{{ path('appointment_show', {'id': appointment.id}) }}"
-                                           role="button"
-                                        >
+                                           role="button">
                                             {{ appointment.title }}
                                         </a>
                                     {% endif %}
