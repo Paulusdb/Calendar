@@ -6,10 +6,10 @@ use App\Entity\Appointment;
 use App\Form\AppointmentType;
 use App\Form\ChangeMonthType;
 use App\Repository\AppointmentRepository;
+use App\Service\MonthChanger;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Notifier\NotifierInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AppointmentController extends AbstractController
@@ -24,17 +24,8 @@ class AppointmentController extends AbstractController
         $time = new \DateTime();
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $currentTime = $form->get('currentDateTime')->getData();
-            $time = new \DateTime($currentTime);
-
-            $changeMonth = $form->get('changeMonth')->getData();
-
-            if ($changeMonth == 'back') {
-                $time = date_modify($time, '-1 month');
-            }
-            elseif ($changeMonth == 'forward') {
-                $time = date_modify($time, '+1 month');
-            }
+            $monthChanger = new MonthChanger();
+            $time = $monthChanger->changeMonth($form);
         }
 
         return $this->renderForm('calendar/calendar.html.twig', [
