@@ -9,10 +9,12 @@ use App\Repository\AppointmentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Notifier\NotifierInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AppointmentController extends AbstractController
 {
+
     #[Route('/', name: 'app_calendar', methods: ['GET', 'POST'])]
     public function calendar(AppointmentRepository $appointmentRepository, Request $request): Response
     {
@@ -35,11 +37,11 @@ class AppointmentController extends AbstractController
             }
         }
 
-        return $this->render('calendar/calendar.html.twig', [
+        return $this->renderForm('calendar/calendar.html.twig', [
             'time' => $time,
             'appointments' => $appointmentRepository->findAll(),
-            'month_back_form' => $form->createView(),
-            'month_forward_form' => $form->createView(),
+            'month_back_form' => $form,
+            'month_forward_form' => $form,
         ]);
     }
 

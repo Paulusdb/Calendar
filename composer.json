@@ -24,6 +24,7 @@
         "symfony/runtime": "5.3.*",
         "symfony/security-csrf": "5.3.*",
         "symfony/stopwatch": "^5.3",
+        "symfony/telegram-notifier": "5.3.*",
         "symfony/twig-bundle": "5.3.*",
         "symfony/validator": "5.3.*",
         "symfony/var-dumper": "5.3.*",
