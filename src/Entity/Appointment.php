@@ -1,41 +1,31 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use App\Repository\AppointmentRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=AppointmentRepository::class)
- */
+#[ORM\Entity(repositoryClass: AppointmentRepository::class)]
 class Appointment
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+     #[ORM\Id]
+     #[ORM\GeneratedValue]
+     #[ORM\Column(type: "integer")]
+    private ?int $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $title;
+     #[ORM\Column(type: "string", length: 255)]
+    private ?string $title;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $begin;
+    #[ORM\Column(type: "datetime")]
+    private ?\DateTimeInterface $begin;
 
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $end;
+    #[ORM\Column(type: "datetime")]
+    private ?\DateTimeInterface $end;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $notification;
+    #[ORM\Column(type: "boolean")]
+    private ?bool $notification;
 
     public function getId(): ?int
     {
