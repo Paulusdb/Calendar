@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Command;
 
 use App\Repository\AppointmentRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -20,15 +21,10 @@ use Symfony\Component\Notifier\NotifierInterface;
 )]
 class NotificationCommand extends Command
 {
-
-    private AppointmentRepository $appointmentRepository;
-    private NotifierInterface $notifier;
-
-    public function __construct(AppointmentRepository $appointmentRepository, NotifierInterface $notifier)
-    {
-        $this->appointmentRepository = $appointmentRepository;
-        $this->notifier = $notifier;
-
+    public function __construct(
+        private AppointmentRepository $appointmentRepository,
+        private NotifierInterface $notifier,
+    ){
         parent::__construct();
     }
 

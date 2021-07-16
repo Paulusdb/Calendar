@@ -15,6 +15,13 @@
         {% endblock %}
     </head>
     <body>
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }} alert-dismissible fade show">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
     <div class="container">
         <div class="row">
             <div class="col">

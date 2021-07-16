@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Service;
+namespace App\Form\ChangeMonth;
 
-class MonthChanger
+class MonthChangeHandler
 {
-    public function changeMonth($form)
+    public function handle($form): \DateTime|bool
     {
         $currentTime = $form->get('currentDateTime')->getData();
         $time = new \DateTime($currentTime);

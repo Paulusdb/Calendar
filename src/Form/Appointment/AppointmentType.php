@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Form;
+namespace App\Form\Appointment;
 
 use App\Entity\Appointment;
 use Symfony\Component\Form\AbstractType;
